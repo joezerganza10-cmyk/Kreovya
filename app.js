@@ -377,7 +377,7 @@ function initContactForm(){
     const lines = [];
     for (const [key, value] of data.entries()) lines.push(`${key}: ${value}`);
     const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:bonjour@kreovya.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@kreovya.com?subject=${subject}&body=${body}`;
     showToast('Ouverture de votre client courriel…');
   });
 }
