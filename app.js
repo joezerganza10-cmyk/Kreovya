@@ -355,6 +355,39 @@ function initStarter(){
   });
 }
 
+/* ---------------- Carrousel de témoignages ---------------- */
+function initTestimonials(){
+  const carousel = document.querySelector('.testi-carousel');
+  if (!carousel) return;
+  const slides = Array.from(carousel.querySelectorAll('.testi-slide'));
+  const dots = Array.from(carousel.querySelectorAll('.testi-dots span'));
+  if (slides.length < 2) return;
+  let current = 0;
+  let timer = null;
+
+  function goTo(i){
+    current = (i + slides.length) % slides.length;
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === current));
+    dots.forEach((d, idx) => d.classList.toggle('is-active', idx === current));
+  }
+
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  carousel.querySelector('.testi-arrow.next')?.addEventListener('click', () => { next(); restart(); });
+  carousel.querySelector('.testi-arrow.prev')?.addEventListener('click', () => { prev(); restart(); });
+  dots.forEach((d, idx) => d.addEventListener('click', () => { goTo(idx); restart(); }));
+
+  function restart(){
+    clearInterval(timer);
+    if (!REDUCED) timer = setInterval(next, 6500);
+  }
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', restart);
+
+  restart();
+}
+
 /* ---------------- Analytics — événements configurables ---------------- */
 function trackEvent(name, data){
   window.dataLayer = window.dataLayer || [];
@@ -408,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initJourney();
   initPortfolioRail();
   initStarter();
+  initTestimonials();
   initAnalyticsHooks();
   initContactForm();
   if (window.initHeroScene) window.initHeroScene();

@@ -294,6 +294,21 @@ button{font-family:inherit;cursor:none;background:none;border:none;color:inherit
 .testi-card p{font-size:15px;font-style:italic}
 .testi-card .who{margin-top:22px;font-size:12.5px;letter-spacing:.6px;color:var(--argent-att)}
 
+/* ---------------- Carrousel de témoignages ---------------- */
+.testi-carousel{display:flex;align-items:center;justify-content:center;gap:20px;max-width:760px;margin:0 auto}
+.testi-track{position:relative;flex:1;min-height:240px;background:var(--surface);border:1px solid var(--ligne);border-radius:var(--radius-lg);overflow:hidden}
+.testi-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px;opacity:0;pointer-events:none;transition:opacity .6s var(--ease)}
+.testi-slide.is-active{opacity:1;pointer-events:auto}
+.testi-slide .quote-mark{font-family:'Unbounded',sans-serif;font-size:40px;color:var(--violet);margin-bottom:6px}
+.testi-slide p{font-size:15px;font-style:italic;max-width:52ch}
+.testi-slide .who{margin-top:22px;font-size:12.5px;letter-spacing:.6px;color:var(--argent-att)}
+.testi-arrow{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--ligne-forte);color:var(--blanc);font-size:16px;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.testi-arrow:hover{border-color:var(--cyan);background:rgba(36,199,255,.08)}
+.testi-dots{display:flex;gap:8px;justify-content:center;margin-top:26px}
+.testi-dots span{width:8px;height:8px;border-radius:50%;background:var(--ligne-forte);transition:background .3s var(--ease),transform .3s var(--ease)}
+.testi-dots span.is-active{background:var(--grad-signature);transform:scale(1.2)}
+@media (max-width:640px){ .testi-carousel{gap:10px} .testi-slide{padding:32px 24px} .testi-arrow{width:36px;height:36px;font-size:14px} }
+
 /* ---------------- CTA final ---------------- */
 .final-cta{position:relative;padding:clamp(120px,16vw,220px) 0;text-align:center;overflow:hidden;background:var(--noir)}
 .final-cta .glow{position:absolute;inset:0;background:var(--grad-radial);opacity:0;transition:opacity 1.2s var(--ease)}
