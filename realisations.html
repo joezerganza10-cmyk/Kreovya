@@ -3,28 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>À propos — KREOVYA</title>
-<meta name="description" content="KREOVYA existe pour transformer les idées en marques, expériences digitales et solutions capables de créer un véritable impact.">
-<link rel="canonical" href="https://kreovya.com/a-propos.html">
-<link rel="icon" href="logo-icon.webp">
+<title>Réalisations — KREOVYA</title>
+<meta name="description" content="Des expériences pensées pour des marques qui veulent aller plus loin. Découvrez les projets réalisés par KREOVYA.">
+<link rel="canonical" href="https://kreovya.com/realisations.html">
+<link rel="icon" href="/logo-icon.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-<style>
-.story-hero{padding:calc(clamp(70px,10vw,140px) + 70px) 0 20px;text-align:center}
-.story-block{max-width:680px;margin:0 auto}
-.story-block p{font-size:16.5px;line-height:1.9;margin-bottom:24px;color:var(--argent)}
-</style>
 </head>
 <body>
 
 <header class="site-header">
-  <a class="brand-mark" href="/index.html"><img src="logo-nav.webp" alt="KREOVYA"></a>
+  <a class="brand-mark" href="/index.html"><img src="/logo-nav.webp" alt="KREOVYA"></a>
   <nav class="nav-links">
     <a href="/index.html">Accueil</a>
     <a href="/services.html">Services</a>
-    <a href="/realisations.html">Réalisations</a>
-    <a href="/a-propos.html" class="is-active">À propos</a>
+    <a href="/realisations.html" class="is-active">Réalisations</a>
+    <a href="/a-propos.html">À propos</a>
     <a href="/contact.html">Contact</a>
   </nav>
   <div class="nav-cta">
@@ -43,32 +38,39 @@
 </div>
 
 <main>
-<section class="story-hero">
-  <div class="wrap section-head">
-    <span class="eyebrow eyebrow-line">À propos</span>
-    <h1>De l'idée à l'impact.</h1>
-  </div>
+<section class="page-hero center wrap">
+  <span class="eyebrow eyebrow-line" style="justify-content:center;display:inline-flex">Nos réalisations</span>
+  <h1>Des expériences pensées pour des<br>marques qui veulent aller plus loin.</h1>
 </section>
 
-<section class="section" style="padding-top:0">
-  <div class="wrap story-block">
-    <p class="reveal" style="font-family:'Unbounded',sans-serif;font-size:22px;color:var(--blanc)">Toute entreprise commence par une idée.</p>
-    <p class="reveal">Mais une idée a besoin d'une stratégie, d'une identité, d'une visibilité et d'une exécution pour devenir un véritable impact.</p>
-    <p class="reveal">KREOVYA existe pour rendre cette transformation possible. Nous ne créons pas simplement des sites, des logos ou des supports imprimés. Nous construisons l'univers qui permet à une idée d'exister, d'être vue et de grandir.</p>
-    <p class="reveal">Chaque projet est traité comme une pièce de portfolio, pas comme une tâche à cocher — parce que la réputation de KREOVYA se construit à travers celle de chaque marque que nous accompagnons.</p>
-  </div>
-</section>
-
-<section class="section" style="background:var(--obsidienne)">
+<section class="section" style="padding-top:20px">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow eyebrow-line">Ce qui nous guide</span>
+    <div class="port-filters" id="filterBar">
+      <button class="is-active" data-filter="tous">Tous</button>
+      <button data-filter="sites">Sites internet</button>
+      <button data-filter="identite">Identité visuelle</button>
     </div>
-    <div class="why-grid reveal-scale">
-      <div class="why-card"><div class="glyph"></div><h3>Sur mesure</h3><p>Chaque projet commence par votre vision, jamais par un gabarit.</p></div>
-      <div class="why-card"><div class="glyph"></div><h3>Créativité</h3><p>Nous cherchons des solutions distinctives plutôt que génériques.</p></div>
-      <div class="why-card"><div class="glyph"></div><h3>Technologie</h3><p>Des outils numériques modernes au service d'expériences plus fortes.</p></div>
-      <div class="why-card"><div class="glyph"></div><h3>Accompagnement</h3><p>Nous restons concentrés sur l'entrepreneur, pas seulement le livrable.</p></div>
+    <div class="case-grid reveal-scale" id="caseGrid">
+      <a class="case-card" data-cat="sites" href="/realisations/christy-lou-royale.html">
+        <img src="/portfolio-christylou-01.webp" alt="Christy-Lou Royale">
+        <div class="scrim"></div>
+        <div class="info"><span class="index">01 — Fashion / E-commerce</span><h3>Christy-Lou Royale</h3><span class="cat">Expérience web immersive</span></div>
+      </a>
+      <a class="case-card" data-cat="identite sites" href="/realisations/debees-hair.html">
+        <img src="/portfolio-debeehair-01.webp" alt="Debee's Hair">
+        <div class="scrim"></div>
+        <div class="info"><span class="index">02 — Beauté / E-commerce</span><h3>Debee's Hair</h3><span class="cat">Identité de marque &amp; expérience digitale</span></div>
+      </a>
+      <a class="case-card" data-cat="sites" href="/realisations/tropical-events.html">
+        <img src="/portfolio-tropicalevents-01.webp" alt="Tropical Events">
+        <div class="scrim"></div>
+        <div class="info"><span class="index">03 — Décoration événementielle</span><h3>Tropical Events</h3><span class="cat">Site créatif immersif</span></div>
+      </a>
+      <a class="case-card" data-cat="sites" href="/realisations/salle-906-galt-est.html">
+        <img src="/portfolio-salle906-01.webp" alt="Salle 906 Galt Est">
+        <div class="scrim"></div>
+        <div class="info"><span class="index">04 — Salle de réception</span><h3>Salle 906 Galt Est</h3><span class="cat">Site de conversion</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -76,10 +78,9 @@
 <section class="final-cta is-near">
   <div class="glow"></div>
   <div class="wrap">
-    <h2 class="reveal">Prêt à construire<br>votre univers ?</h2>
+    <h2 class="reveal">Votre projet pourrait<br>être le prochain.</h2>
     <div class="hero-ctas reveal" style="justify-content:center;margin-top:36px">
       <button class="btn" data-open-starter><span>Démarrer mon projet</span><span class="sheen"></span></button>
-      <a class="btn-outline" href="/contact.html">Nous contacter</a>
     </div>
   </div>
 </section>
@@ -89,7 +90,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo-nav.webp" alt="KREOVYA">
+        <img src="/logo-nav.webp" alt="KREOVYA">
         <p>De l'idée à l'impact. Sites internet, identité visuelle, impression et accompagnement entrepreneurial.</p>
       </div>
       <div>
@@ -107,8 +108,8 @@
       </div>
       <div>
         <h5>Contact</h5>
-        <a href="/contact.html">Nous écrire</a>
-        <a href="/demarrer-projet.html" data-open-starter>Démarrer un projet</a>
+        <a href="mailto:bonjour@kreovya.com">bonjour@kreovya.com</a>
+        <a href="/demarrer-projet.html">Démarrer un projet</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -179,5 +180,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis/dist/lenis.min.js"></script>
 <script src="/app.js"></script>
+<script>
+(function(){
+  var bar = document.getElementById('filterBar');
+  var cards = document.querySelectorAll('.case-card');
+  bar.addEventListener('click', function(e){
+    var btn = e.target.closest('button'); if (!btn) return;
+    bar.querySelectorAll('button').forEach(function(b){ b.classList.toggle('is-active', b === btn); });
+    var f = btn.dataset.filter;
+    cards.forEach(function(c){
+      var cats = (c.dataset.cat || '').split(' ');
+      c.style.display = (f === 'tous' || cats.indexOf(f) > -1) ? '' : 'none';
+    });
+  });
+})();
+</script>
 </body>
 </html>

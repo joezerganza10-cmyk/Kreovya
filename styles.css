@@ -363,6 +363,82 @@ button{font-family:inherit;cursor:none;background:none;border:none;color:inherit
 .form-grid input:focus,.form-grid textarea:focus{outline:none;border-color:var(--cyan)}
 .form-grid textarea{resize:vertical;min-height:120px}
 
+/* ---------------- Sous-pages : hero éditorial ---------------- */
+.page-hero{padding:calc(clamp(70px,10vw,140px) + 70px) 0 20px}
+.page-hero .eyebrow{display:block;margin-bottom:20px}
+.page-hero h1{max-width:16ch}
+.page-hero.center{text-align:center}
+.page-hero.center h1{margin:0 auto}
+
+/* ---------------- Process (comment ça marche) ---------------- */
+.process-list{max-width:780px;margin:0 auto}
+.process-item{display:grid;grid-template-columns:70px 1fr;gap:26px;padding:32px 0;border-top:1px solid var(--ligne)}
+.process-item:last-child{border-bottom:1px solid var(--ligne)}
+.process-num{font-family:'Unbounded',sans-serif;color:var(--cyan);font-size:20px}
+.process-item h3{margin-bottom:8px}
+.process-item p{font-size:14px}
+
+/* ---------------- Page service détaillée ---------------- */
+.service-hero{position:relative;padding:calc(clamp(70px,10vw,140px) + 70px) 0 clamp(60px,8vw,100px);overflow:hidden}
+.service-hero::before{content:'';position:absolute;inset:0;background:var(--grad-radial);opacity:.7;pointer-events:none}
+.service-hero .wrap{position:relative;z-index:1}
+.service-hero .num-big{font-family:'Unbounded',sans-serif;font-size:13px;color:var(--cyan);letter-spacing:3px;margin-bottom:22px;display:block}
+.service-hero h1{max-width:16ch}
+.service-hero .sub{max-width:56ch;margin-top:24px;font-size:16.5px}
+.includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ligne)}
+.includes-card{background:var(--surface);padding:32px 30px}
+.includes-card h3{font-size:15.5px;margin-bottom:10px;color:var(--blanc)}
+.includes-card p{font-size:13.5px}
+@media (max-width:760px){ .includes-grid{grid-template-columns:1fr} }
+.service-nav{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:36px 0;border-top:1px solid var(--ligne)}
+.service-nav a{font-size:13px;letter-spacing:.4px;color:var(--argent);transition:color .3s var(--ease)}
+.service-nav a:hover{color:var(--blanc)}
+
+/* ---------------- Étude de cas ---------------- */
+.case-hero{position:relative;height:78vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+.case-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.case-hero .scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,9,.94) 5%,rgba(5,5,9,.2) 60%)}
+.case-hero .copy{position:relative;z-index:2;padding:0 clamp(20px,5vw,72px) 56px;width:100%}
+.case-hero .industry{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:16px}
+.case-hero h1{font-size:clamp(34px,5.4vw,64px)}
+.case-hero .visit{margin-top:26px;display:inline-flex}
+.case-meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ligne);margin:0 0 clamp(50px,7vw,80px)}
+.case-meta-grid .cell{background:var(--surface);padding:34px 30px}
+.case-meta-grid .cell h5{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--argent-att);margin-bottom:12px}
+.case-meta-grid .cell p{font-size:14.5px;color:var(--blanc)}
+.case-block{max-width:760px;margin:0 auto clamp(70px,9vw,120px)}
+.case-block .eyebrow{display:block;margin-bottom:18px}
+.case-block h2{margin-bottom:22px;font-size:clamp(26px,3.2vw,38px)}
+.case-block p{font-size:16px;line-height:1.9;margin-bottom:18px}
+.case-gallery{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;background:var(--ligne)}
+.case-gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.case-gallery .tall{grid-row:span 2}
+@media (max-width:760px){ .case-gallery{grid-template-columns:1fr} .case-gallery .tall{grid-row:auto} }
+.case-nextprev{display:flex;justify-content:space-between;padding:44px 0;border-top:1px solid var(--ligne)}
+.case-nextprev a{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--argent);transition:color .3s var(--ease)}
+.case-nextprev a:hover{color:var(--blanc)}
+
+/* ---------------- Réalisations : grille + filtres ---------------- */
+.port-filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
+.port-filters button{padding:11px 24px;font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;border:1px solid var(--ligne);border-radius:100px;color:var(--argent);transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.port-filters button.is-active,.port-filters button:hover{background:var(--grad-signature);border-color:transparent;color:var(--blanc)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ligne)}
+.case-card{position:relative;aspect-ratio:5/4;overflow:hidden;display:block}
+.case-card img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1s var(--ease)}
+.case-card:hover img{transform:scale(1)}
+.case-card .scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,9,.9) 0%,rgba(5,5,9,.1) 50%)}
+.case-card .info{position:absolute;left:26px;right:26px;bottom:24px;z-index:2}
+.case-card .info .index{font-size:11px;color:var(--cyan);letter-spacing:1.6px;display:block;margin-bottom:8px}
+.case-card .info h3{font-size:clamp(19px,2.2vw,26px)}
+.case-card .info .cat{font-size:12.5px;color:var(--argent)}
+@media (max-width:760px){ .case-grid{grid-template-columns:1fr} }
+
+/* ---------------- Démarrer un projet — page autonome ---------------- */
+.starter-page{padding:calc(clamp(70px,10vw,140px) + 70px) 0 120px}
+.starter.starter-standalone{position:static;opacity:1;pointer-events:auto;padding:0}
+.starter.starter-standalone .starter-backdrop,.starter.starter-standalone .starter-close{display:none}
+.starter.starter-standalone .starter-panel{transform:none;max-height:none;width:100%;max-width:680px;margin:0 auto}
+
 /* ---------------- Toast ---------------- */
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--surface-elevee);border:1px solid var(--ligne-forte);color:var(--blanc);padding:14px 26px;border-radius:100px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:7000}
 .toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0)}
