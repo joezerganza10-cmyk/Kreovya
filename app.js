@@ -4,6 +4,7 @@
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TOUCH = window.matchMedia('(hover:none), (pointer:coarse)').matches;
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnpqqykg';
 
 /* ---------------- Smooth scroll (Lenis) ---------------- */
 let lenis = null;
@@ -344,13 +345,28 @@ function initStarter(){
     btn.addEventListener('click', () => goTo(current - 1));
   });
   modal.querySelectorAll('[data-submit]').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const step = btn.closest('.starter-step');
       step.querySelectorAll('input, textarea').forEach(f => { answers[f.name] = f.value; });
-      // Placeholder d'intégration — à connecter à un CRM / webhook / automatisation.
-      console.log('KREOVYA — nouvelle demande de projet', answers);
-      trackEvent('form_submit', answers);
-      goTo(steps.length - 1);
+
+      const originalLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span>Envoi…</span>';
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: JSON.stringify({ _subject: 'KREOVYA — Nouvelle demande de projet', ...answers }),
+        });
+        if (!res.ok) throw new Error('Formspree error');
+        trackEvent('form_submit', answers);
+        goTo(steps.length - 1);
+      } catch (err) {
+        showToast("Erreur d'envoi — réessayez ou écrivez-nous à info@kreovya.com");
+        btn.disabled = false;
+        btn.innerHTML = originalLabel;
+      }
     });
   });
 }
@@ -403,15 +419,30 @@ function initAnalyticsHooks(){
 function initContactForm(){
   const form = document.getElementById('contactForm');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const subject = encodeURIComponent('Nouveau message — site KREOVYA');
-    const lines = [];
-    for (const [key, value] of data.entries()) lines.push(`${key}: ${value}`);
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:info@kreovya.com?subject=${subject}&body=${body}`;
-    showToast('Ouverture de votre client courriel…');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn?.innerHTML;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<span>Envoi…</span>'; }
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error('Formspree error');
+      form.reset();
+      form.hidden = true;
+      const confirmMsg = document.createElement('p');
+      confirmMsg.className = 'lede';
+      confirmMsg.textContent = 'Merci ! Votre message a bien été envoyé — nous vous répondrons rapidement.';
+      form.insertAdjacentElement('afterend', confirmMsg);
+      trackEvent('form_submit', { form: 'contact' });
+    } catch (err) {
+      showToast("Erreur d'envoi — réessayez ou écrivez-nous à info@kreovya.com");
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalLabel; }
+    }
   });
 }
 
