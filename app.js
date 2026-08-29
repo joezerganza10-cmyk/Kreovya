@@ -376,7 +376,8 @@ function initTestimonials(){
   const carousel = document.querySelector('.testi-carousel');
   if (!carousel) return;
   const slides = Array.from(carousel.querySelectorAll('.testi-slide'));
-  const dots = Array.from(carousel.querySelectorAll('.testi-dots span'));
+  const dotsContainer = carousel.parentElement.querySelector('.testi-dots');
+  const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('span')) : [];
   if (slides.length < 2) return;
   let current = 0;
   let timer = null;
