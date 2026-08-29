@@ -373,34 +373,41 @@ function initStarter(){
 
 /* ---------------- Carrousel de témoignages ---------------- */
 function initTestimonials(){
-  const carousel = document.querySelector('.testi-carousel');
-  if (!carousel) return;
-  const slides = Array.from(carousel.querySelectorAll('.testi-slide'));
-  const dotsContainer = carousel.parentElement.querySelector('.testi-dots');
-  const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('span')) : [];
-  if (slides.length < 2) return;
-  let current = 0;
-  let timer = null;
+  const viewport = document.getElementById('testiViewport');
+  if (!viewport) return;
+  const track = viewport.querySelector('.testi-track-v2');
+  const cards = Array.from(track.children);
+  const carousel = viewport.closest('.testi-carousel-v2');
+  if (!cards.length) return;
 
-  function goTo(i){
-    current = (i + slides.length) % slides.length;
-    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === current));
-    dots.forEach((d, idx) => d.classList.toggle('is-active', idx === current));
+  function cardStep(){
+    const card = cards[0];
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 24;
+    return card.getBoundingClientRect().width + gap;
   }
 
-  function next(){ goTo(current + 1); }
-  function prev(){ goTo(current - 1); }
+  function next(){
+    const atEnd = viewport.scrollLeft + viewport.clientWidth >= track.scrollWidth - 4;
+    viewport.scrollTo({ left: atEnd ? 0 : viewport.scrollLeft + cardStep(), behavior: 'smooth' });
+  }
+  function prev(){
+    const atStart = viewport.scrollLeft <= 4;
+    const maxScroll = track.scrollWidth - viewport.clientWidth;
+    viewport.scrollTo({ left: atStart ? maxScroll : viewport.scrollLeft - cardStep(), behavior: 'smooth' });
+  }
 
-  carousel.querySelector('.testi-arrow.next')?.addEventListener('click', () => { next(); restart(); });
-  carousel.querySelector('.testi-arrow.prev')?.addEventListener('click', () => { prev(); restart(); });
-  dots.forEach((d, idx) => d.addEventListener('click', () => { goTo(idx); restart(); }));
+  carousel?.querySelector('.testi-nav-btn.next')?.addEventListener('click', () => { next(); restart(); });
+  carousel?.querySelector('.testi-nav-btn.prev')?.addEventListener('click', () => { prev(); restart(); });
 
+  let timer = null;
   function restart(){
     clearInterval(timer);
-    if (!REDUCED) timer = setInterval(next, 6500);
+    if (!REDUCED) timer = setInterval(next, 7000);
   }
-  carousel.addEventListener('mouseenter', () => clearInterval(timer));
-  carousel.addEventListener('mouseleave', restart);
+  viewport.addEventListener('mouseenter', () => clearInterval(timer));
+  viewport.addEventListener('mouseleave', restart);
+  viewport.addEventListener('touchstart', () => clearInterval(timer), { passive: true });
 
   restart();
 }
