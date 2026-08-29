@@ -1,0 +1,20 @@
+{
+  "_comment": "Source unique de vérité pour les informations d'entreprise KREOVYA. Toute donnée structurée (JSON-LD), métadonnée ou mention locale sur le site doit rester cohérente avec ces valeurs. Aucune valeur ici n'est inventée — les champs non fournis restent vides plutôt que d'être devinés.",
+  "businessName": "KREOVYA",
+  "tagline": "De l'idée à l'impact.",
+  "businessDescription": "KREOVYA transforme les idées en marques, expériences digitales et solutions capables de créer un véritable impact. Création de sites internet, logo et identité visuelle, impression et personnalisation, accompagnement entrepreneurial.",
+  "email": "info@kreovya.com",
+  "phone": null,
+  "website": "https://kreovya.com",
+  "streetAddress": null,
+  "city": "Sherbrooke",
+  "region": "Estrie, Québec",
+  "country": "CA",
+  "areaServed": ["Sherbrooke", "Estrie", "Québec"],
+  "socialProfiles": [],
+  "_notes": [
+    "phone: aucun numéro professionnel fourni — ne pas en inventer un pour les données structurées ou Google Business tant que non confirmé.",
+    "streetAddress: aucune adresse physique publique fournie — KREOVYA n'est pas présenté comme un LocalBusiness avec adresse. Le schema utilisé est ProfessionalService avec areaServed uniquement.",
+    "socialProfiles: le lien Instagram générique (https://www.instagram.com) précédemment sur le site n'était pas un vrai profil KREOVYA — retiré. À remplacer par le vrai handle une fois fourni."
+  ]
+}

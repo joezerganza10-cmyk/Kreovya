@@ -18,12 +18,36 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "KREOVYA",
-  "description": "Création de sites internet, logo et identité visuelle, impression et personnalisation, accompagnement entrepreneurial.",
-  "url": "https://kreovya.com/",
-  "image": "https://kreovya.com/logo-full.webp",
-  "areaServed": "Québec, Canada"
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://kreovya.com/#business",
+      "name": "KREOVYA",
+      "description": "KREOVYA transforme les idées en marques, expériences digitales et solutions capables de créer un véritable impact. Création de sites internet, logo et identité visuelle, impression et personnalisation, accompagnement entrepreneurial.",
+      "url": "https://kreovya.com/",
+      "image": "https://kreovya.com/logo-full.webp",
+      "email": "info@kreovya.com",
+      "areaServed": [
+        { "@type": "City", "name": "Sherbrooke" },
+        { "@type": "AdministrativeArea", "name": "Estrie" },
+        { "@type": "AdministrativeArea", "name": "Québec" }
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création de sites internet" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo & identité visuelle" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impression & personnalisation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement entrepreneurial" } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kreovya.com/#website",
+      "url": "https://kreovya.com/",
+      "name": "KREOVYA",
+      "publisher": { "@id": "https://kreovya.com/#business" },
+      "inLanguage": "fr-CA"
+    }
+  ]
 }
 </script>
 </head>
@@ -35,14 +59,14 @@
 <div class="intro" id="intro">
   <canvas></canvas>
   <div class="intro-wordmark">
-    <img src="logo-full.webp" alt="KREOVYA">
+    <img src="logo-full.webp" alt="KREOVYA" width="1077" height="899">
   </div>
   <button class="intro-skip" id="introSkip">Passer</button>
 </div>
 
 <!-- HEADER -->
 <header class="site-header">
-  <a class="brand-mark" href="/index.html"><img src="logo-nav.webp" alt="KREOVYA"></a>
+  <a class="brand-mark" href="/index.html"><img src="logo-nav.webp" alt="KREOVYA" width="1077" height="814"></a>
   <nav class="nav-links">
     <a href="/index.html" class="is-active">Accueil</a>
     <span class="nav-services" style="position:relative">
@@ -235,7 +259,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo-nav.webp" alt="KREOVYA">
+        <img src="logo-nav.webp" alt="KREOVYA" width="1077" height="814">
         <p>De l'idée à l'impact. Sites internet, identité visuelle, impression et accompagnement entrepreneurial.</p>
       </div>
       <div>
@@ -251,12 +275,12 @@
         <a href="/services/logo-identite-visuelle.html">Logo &amp; identité</a>
         <a href="/services/impression-personnalisation.html">Impression</a>
         <a href="/services/accompagnement-entrepreneurial.html">Accompagnement</a>
+        <a href="/creation-site-internet-sherbrooke.html">Sites internet à Sherbrooke</a>
       </div>
       <div>
         <h5>Contact</h5>
         <a href="/contact.html">Nous écrire</a>
         <a href="/demarrer-projet.html" data-open-starter>Démarrer un projet</a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
     <div class="footer-bottom">

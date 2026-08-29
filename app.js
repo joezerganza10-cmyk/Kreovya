@@ -404,6 +404,23 @@ function initTestimonials(){
   restart();
 }
 
+/* ---------------- FAQ accordéon ---------------- */
+function initFaq(){
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(other => {
+        if (other !== item) { other.classList.remove('is-open'); other.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      if (isOpen) { item.classList.remove('is-open'); a.style.maxHeight = null; }
+      else { item.classList.add('is-open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+}
+
 /* ---------------- Analytics — événements configurables ---------------- */
 function trackEvent(name, data){
   window.dataLayer = window.dataLayer || [];
@@ -473,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioRail();
   initStarter();
   initTestimonials();
+  initFaq();
   initAnalyticsHooks();
   initContactForm();
   if (window.initHeroScene) window.initHeroScene();
