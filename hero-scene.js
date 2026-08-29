@@ -34,16 +34,16 @@ window.initHeroScene = function initHeroScene(){
 
   const palette = [0x7C2CFF, 0x5B4FE8, 0x176BFF, 0x24C7FF];
   const layers = [];
-  const LAYER_COUNT = 5;
+  const LAYER_COUNT = 3;
 
   for (let i = 0; i < LAYER_COUNT; i++) {
-    const radius = 1.15 + i * 0.34;
+    const radius = 0.78 + i * 0.36;
     const geo = new THREE.IcosahedronGeometry(radius, 1);
     const edges = new THREE.EdgesGeometry(geo);
     const mat = new THREE.LineBasicMaterial({
       color: palette[i % palette.length],
       transparent: true,
-      opacity: 0.55 - i * 0.06,
+      opacity: 0.5 - i * 0.08,
     });
     const mesh = new THREE.LineSegments(edges, mat);
     mesh.userData.baseRadius = radius;
@@ -64,10 +64,10 @@ window.initHeroScene = function initHeroScene(){
   group.add(core);
 
   // Points en orbite (particules discrètes, pas d'effet "gaming")
-  const particleCount = 90;
+  const particleCount = 46;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount; i++) {
-    const r = 2.4 + Math.random() * 1.4;
+    const r = 1.7 + Math.random() * 0.7;
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos((Math.random() * 2) - 1);
     positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
@@ -76,7 +76,7 @@ window.initHeroScene = function initHeroScene(){
   }
   const particleGeo = new THREE.BufferGeometry();
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const particleMat = new THREE.PointsMaterial({ color: 0x24C7FF, size: 0.028, transparent: true, opacity: 0.55 });
+  const particleMat = new THREE.PointsMaterial({ color: 0x24C7FF, size: 0.022, transparent: true, opacity: 0.5 });
   const particles = new THREE.Points(particleGeo, particleMat);
   group.add(particles);
 
@@ -128,11 +128,11 @@ window.initHeroScene = function initHeroScene(){
       mesh.rotateOnAxis(mesh.userData.axis, mesh.userData.rotSpeed * 0.016);
       const spread = 1 + scrollProgress * (0.35 + i * 0.16);
       mesh.scale.setScalar(spread);
-      mesh.material.opacity = (0.55 - i * 0.06) * (1 - scrollProgress * 0.7);
+      mesh.material.opacity = (0.5 - i * 0.08) * (1 - scrollProgress * 0.7);
     });
     group.scale.setScalar(1 + scrollProgress * 0.18);
     particles.rotation.y -= 0.0009;
-    particleMat.opacity = 0.55 * (1 - scrollProgress * 0.8);
+    particleMat.opacity = 0.5 * (1 - scrollProgress * 0.8);
     core.material.opacity = 0.9 * (1 - scrollProgress * 0.5);
 
     renderer.render(scene, camera);
